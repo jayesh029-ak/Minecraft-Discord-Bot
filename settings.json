@@ -30,16 +30,8 @@
     },
 
     "chat-messages": {
-      "enabled": true,
-      "repeat": true,
-      "repeat-delay": 60,
-
-      "messages": [
-        "I'm a regular player",
-        "Subscibe To ItzAloneGamer!",
-        "I Like to Play Minecraft!"
-      ]
-    },
+  "enabled": false
+    }
 
     "chat-log": true,
     "auto-reconnect": true,
