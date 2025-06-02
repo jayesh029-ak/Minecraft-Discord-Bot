@@ -1,45 +1,41 @@
-const mineflayer = require('mineflayer');
-
-const config = {
-  username: "AfkBot",
-  host: "LifeSteal029.aternos.me",
-  port: 48688,
-  version: "1.12.1"
-};
-
-let bot;
-
-function createBot() {
-  bot = mineflayer.createBot({
-    host: config.host,
-    port: config.port,
-    username: config.username,
-    version: config.version
-  });
-
-  bot.on('login', () => {
-    console.log("Bot joined the server.");
-
-    if (bot.supportFeature('sneak')) {
-      bot.setControlState('sneak', true); // Anti-AFK
-    }
-  });
-
-  bot.on('end', () => {
-    console.log("Bot disconnected.");
-  });
-
-  bot.on('error', err => console.log("Error:", err.message));
-}
-
-// Start the bot
-createBot();
-
-// Auto Leave/Join Every 15 Minutes
-setInterval(() => {
-  if (bot) {
-    console.log("Auto-rejoining...");
-    bot.quit(); // Leave
-    setTimeout(createBot, 5000); // Rejoin after 5 sec
+{
+  "bot-account": {
+    "username": "AfkBot", 
+    "password": "",
+    "type": "mojang"
+  },
+  "server": {
+    "ip": "LifeSteal029.aternos.me", 
+    "port": 48688,   
+    "version": "1.12.1"   
+  },
+  "position": {
+    "enabled": false,
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "utils": {
+    "auto-auth": {
+      "enabled": false,
+      "password": ""
+    },
+    "anti-afk": {
+      "enabled": true,
+      "sneak": true
+    },
+    "chat-messages": {
+      "enabled": true,
+      "repeat": true,
+      "repeat-delay": 60,
+      "messages": [
+        "I'm a regular player",
+        "Subscibe To ItzAloneGamer!",
+        "I Like to Play Minecraft!"
+      ]
+    },
+    "chat-log": true,
+    "auto-reconnect": true,
+    "auto-reconnect-delay": 5000
   }
-}, 15 * 60 * 1000); // 15 minutes
+}
